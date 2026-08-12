@@ -3,16 +3,20 @@
   "version": "1.0.0",
   "description": "OctoFit Tracker Backend - Node.js + Express + TypeScript",
   "main": "dist/server.js",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node src/server.ts",
+    "dev": "npm run build && node dist/server.js",
     "build": "tsc",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["octofit", "fitness", "tracker"],
+  "keywords": [
+    "octofit",
+    "fitness",
+    "tracker"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
@@ -20,6 +24,7 @@
     "mongoose": "^9.9.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.2.0",
     "ts-node": "^10.9.2",
