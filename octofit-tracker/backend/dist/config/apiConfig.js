@@ -3,7 +3,7 @@ export const getApiBaseUrl = () => {
     if (process.env.CODESPACE_NAME) {
         return `https://${process.env.CODESPACE_NAME}-8000.app.github.dev`;
     }
-    return `http://localhost:${process.env.PORT || 8000}`;
+    return 'http://localhost:8000';
 };
 // Get CORS allowed origins based on environment
 export const getCorsOrigins = () => {

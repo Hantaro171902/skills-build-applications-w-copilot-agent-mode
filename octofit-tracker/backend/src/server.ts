@@ -10,7 +10,8 @@ import activityRoutes from './routes/activityRoutes.js';
 dotenv.config();
 
 const app: Express = express();
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
+const HOST = '0.0.0.0';
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/octofit';
 const API_BASE_URL = getApiBaseUrl();
 const CORS_ORIGINS = getCorsOrigins();
@@ -49,7 +50,7 @@ app.use('/api/activities', activityRoutes);
 const startServer = async () => {
   await connectDB();
 
-  app.listen(PORT, () => {
+  app.listen(PORT, HOST, () => {
     console.log(`OctoFit Backend server running on port ${PORT}`);
     console.log(`API Base URL: ${API_BASE_URL}`);
     console.log(`CORS Origins: ${CORS_ORIGINS.join(', ')}`);
