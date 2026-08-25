@@ -29,6 +29,14 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (_req, res) => {
+  res.json({
+    message: 'OctoFit API is running',
+    apiBaseUrl: API_BASE_URL,
+    endpoints: ['/api/health', '/api/users', '/api/activities'],
+  });
+});
+
 // MongoDB Connection
 const connectDB = async () => {
   try {
