@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { getApiBaseUrl, getCorsOrigins } from './config/apiConfig.js';
+import { getCorsOrigins } from './config/apiConfig.js';
 import userRoutes from './routes/userRoutes.js';
 import activityRoutes from './routes/activityRoutes.js';
 dotenv.config();
@@ -10,7 +10,10 @@ const app = express();
 const PORT = 8000;
 const HOST = '0.0.0.0';
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/octofit';
-const API_BASE_URL = getApiBaseUrl();
+const codespaceName = process.env.CODESPACE_NAME;
+const API_BASE_URL = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev`
+    : 'http://localhost:8000';
 const CORS_ORIGINS = getCorsOrigins();
 // Middleware
 app.use(cors({
